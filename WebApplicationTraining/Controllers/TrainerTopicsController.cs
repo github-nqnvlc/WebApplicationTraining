@@ -19,10 +19,10 @@ namespace WebApplicationTraining.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        [Authorize(Roles = "Staff, Trainer")]
+        [Authorize(Roles = "TrainingStaff , Trainer")]
         public ActionResult Index()
         {
-            if (User.IsInRole("Staff"))
+            if (User.IsInRole("TrainingStaff"))
             {
                 var trainertopics = _context.TrainerTopics
                   .Include(t => t.Topic)
@@ -43,7 +43,7 @@ namespace WebApplicationTraining.Controllers
             return View("Login");
         }
 
-        [Authorize(Roles = "Staff")]
+        [Authorize(Roles = "TrainingStaff")]
         [HttpGet]
         public ActionResult Create()
         {

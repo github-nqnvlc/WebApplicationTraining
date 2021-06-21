@@ -1,11 +1,12 @@
 ﻿﻿@model IEnumerable<WebApplicationTraining.Models.TraineeCourse>
 @{ ViewBag.Title = "Assign Trainee to Course"; }
 
-<h2>Courses</h2>
+
 @if (User.IsInRole("TrainingStaff"))
 {
+    <h2>Courses</h2>
     <p>
-        @Html.ActionLink("Assign Trainee to Course", "Create",null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Assign Trainee to Course", "Create", null, new { @class = "btn btn-default" })
     </p>
 
     <table class="table">
@@ -33,7 +34,9 @@
     </table>
 }
 @if (User.IsInRole("Trainee"))
-{<table class="table">
+{
+    <h2>Courses Assigned</h2>
+    <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(item => item.Course)
@@ -48,7 +51,8 @@
                 </td>
             </tr>
         }
-    </table>}
-@Html.ActionLink("Back to home", "Index", "Home")
+    </table>
+}
+@Html.ActionLink("Back to home", "Index", "Home", null, new { @class = "btn btn-primary" })
 
 

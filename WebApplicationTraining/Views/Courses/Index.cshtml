@@ -12,28 +12,28 @@
     </p>
 }
 <table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Category Name</th>
-        <th>Topics</th>
-        <th>Delete</th>
-        <th>Edit</th>
-    </tr>
+        <tr>
+            <th>Name</th>
+            <th>Category Name</th>
+            <th>Topics</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
 
-    @foreach (var course in Model)
+   @foreach (var course in Model)
     {
-<tr>
-        <td>@course.Name</td>
-        <td>@course.Category.Name</td>
-        <td>@course.Topic.Name</td>
+        <tr>
+                <td>@course.Name</td>
+                <td>@course.Category.Name</td>
+                <td>@course.Topic.Name</td>
 
-    <td>
-        @Html.ActionLink("Delete", "Delete", new { id = course.Id }, new { @class = "btn btn-danger" })
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = course.Id }, new { @class = "btn btn-default" })
-    </td>
-</tr>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = course.Id }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = course.Id }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
     }
 
 </table>
