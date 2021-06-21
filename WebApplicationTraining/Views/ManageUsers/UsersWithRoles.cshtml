@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<WebApplicationTraining.ViewModels.Users_In_Role>
 
-@{ ViewBag.Title = "UsersWithRoles"; }
+@{ 
+    ViewBag.Title = "UsersWithRoles"; 
+}
+<br/>
 
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
-        <a onclick="window.location='@Url.Action("Register", "Account")'" class="btn btn-toolbar btn-lg">New User &raquo;</a>
+        <a onclick="window.location='@Url.Action("Register", "Account")'" class="btn btn-primary btn-lg">New User </a>
     </p>}
 <h3>Account</h3>
 <div class="panel-body">
@@ -54,7 +57,7 @@
             });
         });</script>
 }
-@Html.ActionLink("Back to home", "Index", "Home")
+@Html.ActionLink("Back to home", "Index", "Home",null,new { @class = "btn btn-primary" })
 
 
 

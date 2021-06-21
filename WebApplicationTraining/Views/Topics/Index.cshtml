@@ -1,18 +1,18 @@
 ﻿﻿@model IEnumerable<WebApplicationTraining.Models.Topic>
 
-@{ ViewBag.Title = "Index"; }
+@{ ViewBag.Title = "Topic"; }
 
-<h2>Index</h2>
+<h2>Topic</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
         <th>Name</th>
         <th>Edit</th>
         <th>Delete</th>
-        <th>Details</th>
+        
 
     </tr>
 
@@ -20,14 +20,14 @@
     {
         <tr>
             <td>@topic.Name</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { id = topic.Id })</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = topic.Id })</td>
-            <td>@Html.ActionLink("Details", "Details", new { id = topic.Id })</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = topic.Id }, new { @class = "btn btn-default" })</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = topic.Id }, new { @class = "btn btn-danger" })</td>
+            
 
         </tr>
     }
 
 </table>
 
-@Html.ActionLink("Back to home", "Index", "Home")
+@Html.ActionLink("Back to home", "Index", "Home",null,new { @class = "btn btn-primary" })
 

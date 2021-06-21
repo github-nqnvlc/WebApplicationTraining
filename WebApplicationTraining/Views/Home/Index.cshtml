@@ -6,7 +6,7 @@
 
 
 <div class="navbar-collapse collapse">
-    <ul>
+    
         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
         {
             <ul class="nav navbar-nav">
@@ -38,7 +38,7 @@
                 <li>@Html.ActionLink("Trainee Courses", "Index", "TraineeCourses", null, new { @class = "btn btn-default" })</li>
             </ul>
         }
-    </ul>
+    
 
 
 
