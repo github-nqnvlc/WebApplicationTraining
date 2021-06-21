@@ -284,6 +284,7 @@
     <Content Include="Views\ManagerStaffViewModels\Edit.cshtml" />
     <Content Include="Views\ManageUsers\UsersWithRoles.cshtml" />
     <Content Include="Views\ManageUsers\Edit.cshtml" />
+    <Content Include="Views\Topics\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
