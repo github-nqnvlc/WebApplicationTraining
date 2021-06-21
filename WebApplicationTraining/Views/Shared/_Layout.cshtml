@@ -38,13 +38,13 @@
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Trainer"))
                     {
-                        <li>@Html.ActionLink("TrainerTopic", "Index", "TrainerTopics")</li>
-                        <li>@Html.ActionLink("ProfileTrainer", "About", "Home")</li>
+                        <li>@Html.ActionLink("Trainer Topic", "Index", "TrainerTopics")</li>
+                        <li>@Html.ActionLink("Profile Trainer", "About", "Home")</li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Trainee"))
                     {
-                        <li>@Html.ActionLink("TraineeCourses", "Index", "TrainerCourses")</li>
-}
+                        <li>@Html.ActionLink("Trainee Courses", "Index", "TraineeCourses")</li>
+                    }
 
                 </ul>
                 @Html.Partial("_LoginPartial")

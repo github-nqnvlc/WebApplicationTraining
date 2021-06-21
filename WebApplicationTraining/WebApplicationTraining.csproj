@@ -180,36 +180,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106181847372_UpdateDatabase1.cs" />
-    <Compile Include="Migrations\202106181847372_UpdateDatabase1.Designer.cs">
-      <DependentUpon>202106181847372_UpdateDatabase1.cs</DependentUpon>
+    <Compile Include="Migrations\202106210921234_updatedatabase1.cs" />
+    <Compile Include="Migrations\202106210921234_updatedatabase1.Designer.cs">
+      <DependentUpon>202106210921234_updatedatabase1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106181913576_UpdateDatabase2.cs" />
-    <Compile Include="Migrations\202106181913576_UpdateDatabase2.Designer.cs">
-      <DependentUpon>202106181913576_UpdateDatabase2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106190503196_UpdateDatabase3.cs" />
-    <Compile Include="Migrations\202106190503196_UpdateDatabase3.Designer.cs">
-      <DependentUpon>202106190503196_UpdateDatabase3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106190504556_UpdateDatabase4.cs" />
-    <Compile Include="Migrations\202106190504556_UpdateDatabase4.Designer.cs">
-      <DependentUpon>202106190504556_UpdateDatabase4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106190506590_UpdateDatabase5.cs" />
-    <Compile Include="Migrations\202106190506590_UpdateDatabase5.Designer.cs">
-      <DependentUpon>202106190506590_UpdateDatabase5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106190925313_UpdateDatabase6.cs" />
-    <Compile Include="Migrations\202106190925313_UpdateDatabase6.Designer.cs">
-      <DependentUpon>202106190925313_UpdateDatabase6.cs</DependentUpon>
+    <Compile Include="Migrations\202106210953189_updatedatabase2.cs" />
+    <Compile Include="Migrations\202106210953189_updatedatabase2.Designer.cs">
+      <DependentUpon>202106210953189_updatedatabase2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCategory.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\Trainee.cs" />
@@ -295,12 +280,14 @@
     <Content Include="Views\TrainerTopics\Index.cshtml" />
     <Content Include="Views\TrainerTopics\Create.cshtml" />
     <Content Include="Views\TrainerTopics\Edit.cshtml" />
+    <Content Include="Views\ManagerStaffViewModels\Index.cshtml" />
+    <Content Include="Views\ManagerStaffViewModels\Edit.cshtml" />
+    <Content Include="Views\ManageUsers\UsersWithRoles.cshtml" />
+    <Content Include="Views\ManageUsers\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\ManagerStaffViewModels\" />
-    <Folder Include="Views\ManageUsers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -316,23 +303,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106181847372_UpdateDatabase1.resx">
-      <DependentUpon>202106181847372_UpdateDatabase1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106210921234_updatedatabase1.resx">
+      <DependentUpon>202106210921234_updatedatabase1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106181913576_UpdateDatabase2.resx">
-      <DependentUpon>202106181913576_UpdateDatabase2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106190503196_UpdateDatabase3.resx">
-      <DependentUpon>202106190503196_UpdateDatabase3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106190504556_UpdateDatabase4.resx">
-      <DependentUpon>202106190504556_UpdateDatabase4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106190506590_UpdateDatabase5.resx">
-      <DependentUpon>202106190506590_UpdateDatabase5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106190925313_UpdateDatabase6.resx">
-      <DependentUpon>202106190925313_UpdateDatabase6.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106210953189_updatedatabase2.resx">
+      <DependentUpon>202106210953189_updatedatabase2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
