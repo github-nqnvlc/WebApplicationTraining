@@ -15,6 +15,7 @@
                 }
         @if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
         {
+            
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Manage Account", "Index", "ManagerStaffViewModels", null, new { @class = "btn btn-default" })</li>
                 <li>@Html.ActionLink("Manage Category", "Index", "Categories", null, new { @class = "btn btn-default" })</li>
@@ -24,13 +25,15 @@
                 <li>@Html.ActionLink("Assign Trainee Course", "Index", "TraineeCourses", null, new { @class = "btn btn-default" })</li>
 
             </ul>
+                
 
-        }
+         }
         @if (Request.IsAuthenticated && User.IsInRole("Trainer"))
         {
+
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Trainer Topic", "Index", "TrainerTopics", null, new { @class = "btn btn-default" })</li>
-                <li>@Html.ActionLink("Profile Trainer", "About", "Home", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Profile Trainer", "Details", "ManageUsers", null, new { @class = "btn btn-default" })</li>
             </ul>
         }
         @if (Request.IsAuthenticated && User.IsInRole("Trainee"))

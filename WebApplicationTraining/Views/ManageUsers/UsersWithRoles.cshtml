@@ -20,20 +20,22 @@
                 <th>Email</th>
                 <th>Role</th>
                 <th>Edit</th>
+                <th>Details</th>
                 <th>Delete</th>
             </tr>
         </thead>
         @foreach (var user in Model)
         {
             <tr>
-                @if ((user.Role.Contains("Staff") || user.Role.Contains("Trainer")) == true)
+                @if ((user.Role.Contains("Staff") || user.Role.Contains("Trainee") || user.Role.Contains("Trainer")) == true)
                 {
                     <td>@user.Name</td>
                     <td>@user.Username</td>
                     <td>@user.Email</td>
                     <td>@user.Role</td>
-                    <td>@Html.ActionLink("Edit", "Edit", new { id = user.UserId })</td>
-                    <td>@Html.ActionLink("Delete", "Delete", new { id = user.UserId })</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new { id = user.UserId },new { @class="btn btn-default"})</td>
+                    <td>@Html.ActionLink("Details", "Details", new { id = user.UserId }, new { @class = "btn btn-default" })</td>
+                    <td>@Html.ActionLink("Delete", "Delete", new { id = user.UserId }, new { @class = "btn btn-danger" })</td>
                 }
 
             </tr>

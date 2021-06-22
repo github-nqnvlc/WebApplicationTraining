@@ -188,6 +188,10 @@
     <Compile Include="Migrations\202106210953189_updatedatabase2.Designer.cs">
       <DependentUpon>202106210953189_updatedatabase2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106211541386_UpdateDatabase3.cs" />
+    <Compile Include="Migrations\202106211541386_UpdateDatabase3.Designer.cs">
+      <DependentUpon>202106211541386_UpdateDatabase3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -285,6 +289,7 @@
     <Content Include="Views\ManageUsers\UsersWithRoles.cshtml" />
     <Content Include="Views\ManageUsers\Edit.cshtml" />
     <Content Include="Views\Topics\Details.cshtml" />
+    <Content Include="Views\ManageUsers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106210953189_updatedatabase2.resx">
       <DependentUpon>202106210953189_updatedatabase2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106211541386_UpdateDatabase3.resx">
+      <DependentUpon>202106211541386_UpdateDatabase3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -29,6 +29,8 @@ namespace WebApplicationTraining.Controllers
                                   {
                                       UserId = user.Id,
                                       Name = user.Name,
+                                      Age = user.Age,
+                                      WorkingPlace = user.WorkingPlace,
                                       Username = user.UserName,
                                       Emailaddress = user.Email,
                                       Password = user.PasswordHash,
@@ -81,6 +83,8 @@ namespace WebApplicationTraining.Controllers
             {
                 userInDb.Name = user.Name;
                 userInDb.UserName = user.UserName;
+                userInDb.Age = user.Age;
+                userInDb.WorkingPlace = user.WorkingPlace;
                 userInDb.Phone = user.Phone;
                 userInDb.Email = user.Email;
 
@@ -91,6 +95,14 @@ namespace WebApplicationTraining.Controllers
                 return RedirectToAction("UsersWithRoles");
             }
             return View(user);
+        }
+        [Authorize(Roles = "Admin, Trainer")]
+        public ActionResult Details(string id)
+        {
+            if (id == null) return HttpNotFound();
+            var userDetail = _context.Users.SingleOrDefault(t => t.Id == id);
+            if (userDetail == null) return HttpNotFound();
+            return View(userDetail);
         }
 
         [Authorize(Roles = "Admin")]

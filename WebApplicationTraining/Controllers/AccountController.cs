@@ -145,7 +145,7 @@ namespace WebApplicationTraining.Controllers
         {
             if (User.IsInRole("Admin"))
             {
-                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("Trainee")).ToList(), "Name", "Name");
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
                 return View();
             }
             if (User.IsInRole("TrainingStaff"))

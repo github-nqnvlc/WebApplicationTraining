@@ -1,0 +1,21 @@
+﻿@model WebApplicationTraining.Models.ApplicationUser
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">Information of Users</div>
+    <div class="panel-body">
+        <p>Full Name: @Model.Name</p>
+        <p>User Name: @Model.UserName</p>
+        <p>Age: @Model.Age</p>
+        <p>Working Place: @Model.WorkingPlace</p>
+        <p>Email: @Model.Email</p>
+        <p>Phone: @Model.Phone</p>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "UsersWithRoles", null, new { @class = "btn btn-primary" })
+</div>
