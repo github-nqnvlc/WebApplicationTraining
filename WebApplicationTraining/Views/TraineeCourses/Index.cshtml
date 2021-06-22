@@ -29,6 +29,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Course.Name)
                 </td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
             </tr>
         }
     </table>
@@ -46,9 +47,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course.Name)
-                </td>
+                <td>@Html.DisplayFor(modelItem => item.Course.Name)</td>
+                
             </tr>
         }
     </table>

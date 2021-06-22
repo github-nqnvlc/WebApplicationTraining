@@ -150,7 +150,7 @@ namespace WebApplicationTraining.Controllers
             }
             if (User.IsInRole("TrainingStaff"))
             {
-                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("TrainingStaff") && !u.Name.Contains("Trainer")).ToList(), "Name", "Name");
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("TrainingStaff")).ToList(), "Name", "Name");
                 return View();
             }
             return View("Login");
@@ -159,8 +159,7 @@ namespace WebApplicationTraining.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-
+        [Authorize(Roles = "")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)

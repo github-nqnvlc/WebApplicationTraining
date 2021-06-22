@@ -42,6 +42,22 @@ namespace WebApplicationTraining.Controllers
             }
             return View("Login");
         }
+        [HttpGet]
+        [Authorize(Roles = "TrainingStaff")]
+
+        public ActionResult Delete(int id)
+        {
+            var courseInDb = _context.TrainerTopics.SingleOrDefault(p => p.Id == id);
+
+            if (courseInDb == null)
+            {
+                return HttpNotFound();
+            }
+            _context.TrainerTopics.Remove(courseInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
         [Authorize(Roles = "TrainingStaff")]
         [HttpGet]
