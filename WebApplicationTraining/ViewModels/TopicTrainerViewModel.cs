@@ -10,6 +10,6 @@ namespace WebApplicationTraining.ViewModels
     {
         public Trainer Trainer { get; set; }
         public IEnumerable<Topic> topics { get; set; }
-        public IEnumerable<Course> courses { get; set; }
+        //public IEnumerable<Course> courses { get; set; }
     }
 }

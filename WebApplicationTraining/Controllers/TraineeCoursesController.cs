@@ -36,6 +36,40 @@ namespace WebApplicationTraining.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "TrainingStaff")]
+        public ActionResult Edit(int id)
+        {
+            var traineecourseInDb = _context.Categories.SingleOrDefault(p => p.Id == id);
+
+            if (traineecourseInDb == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(traineecourseInDb);
+        }
+        [HttpPost]
+        [Authorize(Roles = "TrainingStaff")]
+        public ActionResult Edit(TraineeCourse traineecourse)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var traineecourseInDb = _context.TraineeCourses.SingleOrDefault(p => p.Id == traineecourse.Id);
+
+            if (traineecourseInDb == null)
+            {
+                return HttpNotFound();
+            }
+            traineecourseInDb.Trainee = traineecourse.Trainee;
+            traineecourseInDb.Course = traineecourse.Course;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "TrainingStaff")]
 
         public ActionResult Delete(int id)
         {

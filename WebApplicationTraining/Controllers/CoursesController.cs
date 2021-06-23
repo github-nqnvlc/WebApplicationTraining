@@ -23,14 +23,14 @@ namespace WebApplicationTraining.Controllers
 		public ActionResult Index(string searchString)
 		{
 			var courses = _context.Courses
-			.Include(p => p.Category).Include(c => c.Topic);
+			.Include(p => p.Category);//.Include(c => c.Topic);
 
 			if (!String.IsNullOrEmpty(searchString))
 			{
 				courses = courses.Where(
 					s => s.Name.Contains(searchString) ||
-					s.Category.Name.Contains(searchString) ||
-					s.Topic.Name.Contains(searchString));
+					s.Category.Name.Contains(searchString));
+					//s.Topic.Name.Contains(searchString));
 
 			}
 
@@ -44,7 +44,7 @@ namespace WebApplicationTraining.Controllers
 			var viewModel = new CourseCategoryViewModel
 			{
 				Categories = _context.Categories.ToList(),
-				Topics = _context.Topics.ToList()
+				//Topics = _context.Topics.ToList()
 			};
 			return View(viewModel);
 		}
@@ -68,7 +68,7 @@ namespace WebApplicationTraining.Controllers
 			{
 				Name = course.Name,
 				CategoryId = course.CategoryId,
-				TopicId = course.TopicId,
+				TopicId = 11,
 			};
 
 			_context.Courses.Add(newCourse);
@@ -111,7 +111,7 @@ namespace WebApplicationTraining.Controllers
 			{
 				Course = courseInDb,
 				Categories = _context.Categories.ToList(),
-				Topics = _context.Topics.ToList()
+				//Topics = _context.Topics.ToList()
 			};
 
 			return View(viewModel);
@@ -136,7 +136,7 @@ namespace WebApplicationTraining.Controllers
 
 			courseInDb.Name = course.Name;
 			courseInDb.CategoryId = course.CategoryId;
-			courseInDb.TopicId = course.TopicId;
+			//courseInDb.TopicId = course.TopicId;
 			_context.SaveChanges();
 
 			return RedirectToAction("Index");

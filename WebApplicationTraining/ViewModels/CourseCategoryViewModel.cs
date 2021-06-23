@@ -10,7 +10,7 @@ namespace WebApplicationTraining.ViewModels
     {
         public Course Course { get; set; }
         public IEnumerable<Category> Categories { get; set; }
-        public IEnumerable<Topic> Topics { get; set; }
+        //public IEnumerable<Topic> Topics { get; set; }
 
     }
 }

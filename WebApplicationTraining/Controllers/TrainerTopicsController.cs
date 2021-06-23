@@ -121,14 +121,38 @@ namespace WebApplicationTraining.Controllers
                 };
                 return View(TrainerTopicVM);
             }
-
-            /*var TrainerTopicVM = new TrainerTopicViewModel()
-            {
-              Topics = topics,
-              Trainers = users,
-              TrainerTopic = new TrainerTopic()
-            };*/
             _context.TrainerTopics.Add(model.TrainerTopic);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var trainertopicInDb = _context.TrainerTopics.SingleOrDefault(p => p.Id == id);
+            if (trainertopicInDb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trainertopicInDb);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "TrainingStaff")]
+        public ActionResult Edit(TrainerTopic trainertopic)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var trainertopicInDb = _context.TrainerTopics.SingleOrDefault(p => p.Id == trainertopic.Id);
+
+            if (trainertopicInDb == null)
+            {
+                return HttpNotFound();
+            }
+            trainertopicInDb.Trainer = trainertopic.Trainer;
+            trainertopicInDb.Topic = trainertopic.Topic;
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

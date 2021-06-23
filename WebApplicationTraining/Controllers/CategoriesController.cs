@@ -16,7 +16,7 @@ namespace WebApplicationTraining.Controllers
 		{
 			_context = new ApplicationDbContext();
 		}
-		// GET: Course
+		
 		[HttpGet]
 		public ActionResult Index()
 		{
@@ -101,12 +101,9 @@ namespace WebApplicationTraining.Controllers
 			{
 				return HttpNotFound();
 			}
-
 			categoryInDb.Name = category.Name;
 			categoryInDb.Description = category.Description;
-
 			_context.SaveChanges();
-
 			return RedirectToAction("Index");
 		}
 	}

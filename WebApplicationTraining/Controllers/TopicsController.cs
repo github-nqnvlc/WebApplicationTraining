@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
+using System.Net;
 using System.Web.Mvc;
 using WebApplicationTraining.Models;
 
@@ -18,7 +16,7 @@ namespace WebApplicationTraining.Controllers
 		{
 			_context = new ApplicationDbContext();
 		}
-		// GET: Course
+		
 		[HttpGet]
 		public ActionResult Index()
 		{
@@ -103,12 +101,9 @@ namespace WebApplicationTraining.Controllers
 			{
 				return HttpNotFound();
 			}
-
 			topicInDb.Name = topicInDb.Name;
 			topicInDb.Description = topicInDb.Description;
-
 			_context.SaveChanges();
-
 			return RedirectToAction("Index");
 		}
 	}

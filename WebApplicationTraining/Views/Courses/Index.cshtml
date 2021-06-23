@@ -15,7 +15,6 @@
         <tr>
             <th>Name</th>
             <th>Category Name</th>
-            <th>Topics</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
@@ -25,7 +24,7 @@
         <tr>
                 <td>@course.Name</td>
                 <td>@course.Category.Name</td>
-                <td>@course.Topic.Name</td>
+                
 
             <td>
                 @Html.ActionLink("Delete", "Delete", new { id = course.Id }, new { @class = "btn btn-danger" })

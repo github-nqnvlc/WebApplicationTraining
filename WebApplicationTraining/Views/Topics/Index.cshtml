@@ -1,33 +1,38 @@
 ﻿﻿@model IEnumerable<WebApplicationTraining.Models.Topic>
 
-@{ ViewBag.Title = "Topic"; }
+@{
+    ViewBag.Title = "Topic";
+}
 
 <h2>Topic</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary" })
-</p>
-<table class="table">
+@if (User.IsInRole("TrainingStaff"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+<table class="table table-striped">
     <tr>
         <th>Name</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        
-
+        <th>Description</th>
+        @if (User.IsInRole("TrainingStaff"))
+        {
+            <th> Delete </th>
+            <th> Edit </th>
+        }
     </tr>
-
-    @foreach (var topic in Model)
+    @foreach (var category in Model)
     {
         <tr>
-            <td>@topic.Name</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { id = topic.Id }, new { @class = "btn btn-default" })</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = topic.Id }, new { @class = "btn btn-danger" })</td>
-            
-
+            <td>@category.Name</td>
+            <td>@category.Description</td>
+            @if (User.IsInRole("TrainingStaff"))
+            {
+                <td>@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { @class = "btn btn-danger" })</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = category.Id }, new { @class = "btn btn-default" })</td>
+            }
         </tr>
     }
-
 </table>
-
-@Html.ActionLink("Back to home", "Index", "Home",null,new { @class = "btn btn-primary" })
+@Html.ActionLink("Back to home", "Index", "Home", null, new { @class = "btn btn-primary" })
 
