@@ -87,11 +87,9 @@ namespace WebApplicationTraining.Controllers
 
         public ActionResult Create()
         {
-            //get trainer
+            
             var role = (from r in _context.Roles where r.Name.Contains("Trainee") select r).FirstOrDefault();
             var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
-
-            //get topic
 
             var courses = _context.Courses.ToList();
 
@@ -108,11 +106,11 @@ namespace WebApplicationTraining.Controllers
         [HttpPost]
         public ActionResult Create(TraineeCourseViewModel model)
         {
-            //get trainer
+            
             var role = (from r in _context.Roles where r.Name.Contains("Trainee") select r).FirstOrDefault();
             var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
 
-            //get topic
+            
 
             var courses = _context.Courses.ToList();
 

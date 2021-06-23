@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\TraineeCoursesController.cs" />
+    <Compile Include="Controllers\TrainerCoursesController.cs" />
     <Compile Include="Controllers\TrainerTopicsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,6 +192,18 @@
     <Compile Include="Migrations\202106211541386_UpdateDatabase3.cs" />
     <Compile Include="Migrations\202106211541386_UpdateDatabase3.Designer.cs">
       <DependentUpon>202106211541386_UpdateDatabase3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231801256_UpdateDatabase4.cs" />
+    <Compile Include="Migrations\202106231801256_UpdateDatabase4.Designer.cs">
+      <DependentUpon>202106231801256_UpdateDatabase4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231804424_UpdateDatabase5.cs" />
+    <Compile Include="Migrations\202106231804424_UpdateDatabase5.Designer.cs">
+      <DependentUpon>202106231804424_UpdateDatabase5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231857397_UpdateDatabase6.cs" />
+    <Compile Include="Migrations\202106231857397_UpdateDatabase6.Designer.cs">
+      <DependentUpon>202106231857397_UpdateDatabase6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -212,6 +225,7 @@
     <Compile Include="ViewModels\ManagerStaffViewModel.cs" />
     <Compile Include="ViewModels\TopicTrainerViewModel.cs" />
     <Compile Include="ViewModels\TraineeCourseViewModel.cs" />
+    <Compile Include="ViewModels\TrainerCourseViewModel.cs" />
     <Compile Include="ViewModels\TrainerTopicViewModel.cs" />
     <Compile Include="ViewModels\Users_In_Role.cs" />
   </ItemGroup>
@@ -292,6 +306,8 @@
     <Content Include="Views\Topics\Details.cshtml" />
     <Content Include="Views\ManageUsers\Details.cshtml" />
     <Content Include="Views\TraineeCourses\Edit.cshtml" />
+    <Content Include="Views\TrainerCourses\Index.cshtml" />
+    <Content Include="Views\TrainerCourses\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +335,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106211541386_UpdateDatabase3.resx">
       <DependentUpon>202106211541386_UpdateDatabase3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231801256_UpdateDatabase4.resx">
+      <DependentUpon>202106231801256_UpdateDatabase4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231804424_UpdateDatabase5.resx">
+      <DependentUpon>202106231804424_UpdateDatabase5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231857397_UpdateDatabase6.resx">
+      <DependentUpon>202106231857397_UpdateDatabase6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

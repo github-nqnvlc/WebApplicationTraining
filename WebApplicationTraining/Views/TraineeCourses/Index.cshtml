@@ -4,7 +4,7 @@
 
 @if (User.IsInRole("TrainingStaff"))
 {
-<h2>Assign Trainer To Course</h2>
+<h2>Assign Trainee To Course</h2>
     <p>
         @Html.ActionLink("Assign Trainee to Course", "Create", null, new { @class = "btn btn-default" })
     </p>
@@ -17,7 +17,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Course)
             </th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
 
         @foreach (var item in Model)
@@ -29,7 +30,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Course.Name)
         </td>
-        <td>
         <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })</td>
         <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
     </tr>
