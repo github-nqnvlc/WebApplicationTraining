@@ -23,6 +23,7 @@
                 <li>@Html.ActionLink("Manage Courses", "Index", "Courses", null, new { @class = "btn btn-default" })</li>
                 <!--<li>@Html.ActionLink("Assign Trainer Topic", "Index", "TrainerTopics", null, new { @class = "btn btn-default" })</li>-->
                 <li>@Html.ActionLink("Assign Trainee Course", "Index", "TraineeCourses", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Assign Trainer Course", "Index", "TrainerCourses", null, new { @class = "btn btn-default" })</li>
 
             </ul>
                 
@@ -32,14 +33,15 @@
         {
 
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Trainer Topic", "Index", "TrainerTopics", null, new { @class = "btn btn-default" })</li>
-                <li>@Html.ActionLink("Profile Trainer", "Details", "ManageUsers", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Trainer Course", "Index", "TrainerCourses", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Profile Trainer", "Profile", "ManageUsers", null, new { @class = "btn btn-default" })</li>
             </ul>
         }
         @if (Request.IsAuthenticated && User.IsInRole("Trainee"))
         {
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Trainee Courses", "Index", "TraineeCourses", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Profile Trainee", "Profile", "ManageUsers", null, new { @class = "btn btn-default" })</li>
             </ul>
         }
     

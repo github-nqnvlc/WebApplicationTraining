@@ -25,6 +25,7 @@ namespace WebApplicationTraining.Models
             public DbSet<TraineeCourse> TraineeCourses { get; set; }
             public ManagerStaffViewModel managerStaffViewModels { get; set; }
             public DbSet<TrainerCourse> TrainerCourses { get; set; }
+            
 
 
             public static ApplicationDbContext Create()

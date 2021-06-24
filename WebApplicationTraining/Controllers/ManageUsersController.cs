@@ -21,7 +21,7 @@ namespace WebApplicationTraining.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        // GET: ManageUsers
+        
         public ActionResult UsersWithRoles()
         {
             var usersWithRoles = (from user in _context.Users
@@ -103,6 +103,47 @@ namespace WebApplicationTraining.Controllers
             var userDetail = _context.Users.SingleOrDefault(t => t.Id == id);
             if (userDetail == null) return HttpNotFound();
             return View(userDetail);
+        }
+        [Authorize(Roles = "Trainer,Trainee")]
+        public ActionResult Profile()
+        {
+            var userProfileId = User.Identity.GetUserId();
+            if (userProfileId == null) return HttpNotFound();
+            var userProfile = _context.Users.SingleOrDefault(p => p.Id == userProfileId);
+            return View(userProfile);
+        }
+        [HttpGet]
+        [Authorize(Roles = "Trainer, Trainee")]
+        public ActionResult EditProfile(string id)
+        {
+            id = User.Identity.GetUserId();
+            if (id == null) return HttpNotFound();
+            var userInfo = _context.Users.Find(id);
+            if (userInfo == null) return HttpNotFound();
+            return View(userInfo);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Trainer, Trainee")]
+        public ActionResult EditProfile(ApplicationUser user)
+        {
+            user.Id = User.Identity.GetUserId();
+            var userProfile = _context.Users.Find(user.Id);
+            if (userProfile == null) return View(user);
+            if (ModelState.IsValid)
+            {
+                userProfile.Name = user.Name;
+                userProfile.UserName = user.UserName;
+                userProfile.Age = user.Age;
+                userProfile.WorkingPlace = user.WorkingPlace;
+                userProfile.Phone = user.Phone;
+                userProfile.Email = user.Email;
+                _context.Users.AddOrUpdate(userProfile);
+                _context.SaveChanges();
+
+                return RedirectToAction("Profile");
+            }
+            return View(user);
+
         }
 
         [Authorize(Roles = "Admin")]

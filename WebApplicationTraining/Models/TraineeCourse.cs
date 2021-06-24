@@ -14,5 +14,6 @@ namespace WebApplicationTraining.Models
         public int CourseId { get; set; }
         public ApplicationUser Trainee { get; set; }
         public Course Course { get; set; }
+
     }
 }

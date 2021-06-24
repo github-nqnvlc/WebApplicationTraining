@@ -1,0 +1,23 @@
+﻿@model WebApplicationTraining.Models.ApplicationUser
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Information of Users</div>
+    <div class="panel-body">
+        <p>Full Name: @Model.Name</p>
+        <p>User Name: @Model.UserName</p>
+        <p>Age: @Model.Age</p>
+        <p>Working Place: @Model.WorkingPlace</p>
+        <p>Email: @Model.Email</p>
+        <p>Phone: @Model.Phone</p>
+        @Html.ActionLink("Edit Profile", "EditProfile", null, new { @class = "btn btn-danger" })
+    </div>
+    
+</div>
+    
+<br/>
+    @Html.ActionLink("Back to Home", "Index","Home", null, new { @class = "btn btn-primary" })
