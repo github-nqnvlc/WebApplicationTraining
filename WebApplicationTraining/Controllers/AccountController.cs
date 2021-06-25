@@ -268,16 +268,17 @@ namespace WebApplicationTraining.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ResetManagerPassword(string id)
+        public async Task<ActionResult> ResetPassword(ApplicationUser user)
         {
-            var user = await UserManager.FindByIdAsync(id);
-            if (user == null)
+            user.Id = User.Identity.GetUserId();
+            var userReset = context.Users.Find(user.Id);
+            if (userReset == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            await UserManager.RemovePasswordAsync(id);
+            await UserManager.RemovePasswordAsync(user.Id);
 
-            var newPassword = "Abcd@1234";
+            var newPassword = "Abc@123";
             await UserManager.AddPasswordAsync(user.Id, newPassword);
-            return RedirectToAction("GetManagers", "Admin");
+            return RedirectToAction("Index","Home");
         }
 
         //

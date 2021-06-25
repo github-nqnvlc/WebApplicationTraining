@@ -13,6 +13,7 @@
         {
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("ManageUsers", "UsersWithRoles", "ManageUsers", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Profile Admin", "Profile", "ManageUsers", null, new { @class = "btn btn-default" })</li>
             </ul>
                 }
         @if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
