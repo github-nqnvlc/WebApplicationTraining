@@ -45,13 +45,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            
                 <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+           
         </div>
     </div>
- }
+   
+ 
+}
+<br/>
 
 <div>
-    @Html.ActionLink("Back to Profile", "Profile", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to Profile", "Profile", null, new { @class = "btn btn-primary" }) @Html.ActionLink("Reset Manager Password", "ResetPassword", "Account", @Model.Id, new { @class = "btn btn-default" })
 </div>

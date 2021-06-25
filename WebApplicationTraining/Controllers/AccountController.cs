@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -267,25 +268,16 @@ namespace WebApplicationTraining.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        public async Task<ActionResult> ResetManagerPassword(string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByIdAsync(id);
             if (user == null)
-            {
-                // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            AddErrors(result);
-            return View();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            await UserManager.RemovePasswordAsync(id);
+
+            var newPassword = "Abcd@1234";
+            await UserManager.AddPasswordAsync(user.Id, newPassword);
+            return RedirectToAction("GetManagers", "Admin");
         }
 
         //
