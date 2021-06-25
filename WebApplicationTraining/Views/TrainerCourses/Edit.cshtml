@@ -1,0 +1,28 @@
+﻿@model WebApplicationTraining.ViewModels.TrainerCourseViewModel
+@{
+    ViewBag.Title = "Edit Assign Traier To Course";
+}
+
+<h2>Edit Assign Traiee To Course</h2>
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+@using (Html.BeginForm("Edit", "TrainerCourses", FormMethod.Post))
+{
+    @Html.HiddenFor(u => u.TrainerCourse.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.TrainerCourse.Trainer, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(x => x.TrainerCourse.TrainerId,
+            new SelectList(Model.Trainers, "Id", "UserName"),
+            "Select User", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TrainerCourse.Course, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(x => x.TrainerCourse.CourseId,
+            new SelectList(Model.Courses, "Id", "Name"),
+            "Select Courses", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Edit</button>
+}
+<br />
+@Html.ActionLink("Back Index", "Index", null, new { @class = "btn btn-default" })

@@ -310,6 +310,7 @@
     <Content Include="Views\TrainerCourses\Create.cshtml" />
     <Content Include="Views\ManageUsers\Profile.cshtml" />
     <Content Include="Views\ManageUsers\EditProfile.cshtml" />
+    <Content Include="Views\TrainerCourses\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -94,5 +94,42 @@ namespace WebApplicationTraining.Controllers
 
             return View(TrainerCourseVM);
         }
+        [HttpGet]
+        [Authorize(Roles = "TrainingStaff")]
+        public ActionResult Edit(int id)
+        {
+            var role = (from r in _context.Roles where r.Name.Contains("Trainer") select r).FirstOrDefault();
+            var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
+            var courses = _context.Courses.ToList();
+            var trainercourseId = _context.TrainerCourses.SingleOrDefault(n => n.Id == id);
+            if (trainercourseId == null) return HttpNotFound();
+            var viewModel = new TrainerCourseViewModel()
+            {
+                Courses = courses,
+                Trainers = users,
+                TrainerCourse = new TrainerCourse()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "TrainingStaff")]
+        public ActionResult Edit(TrainerCourseViewModel model)
+        {
+            var role = (from r in _context.Roles where r.Name.Contains("Trainer") select r).FirstOrDefault();
+            var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
+            var courses = _context.Courses.ToList();
+
+            if (!ModelState.IsValid) return View();
+            var TraineeCourseVM = new TrainerCourseViewModel()
+            {
+                Courses = courses,
+                Trainers = users,
+                TrainerCourse = new TrainerCourse()
+            };
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

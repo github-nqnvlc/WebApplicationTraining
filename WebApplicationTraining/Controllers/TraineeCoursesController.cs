@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using WebApplicationTraining.Models;
 using System.Data.Entity;
 using WebApplicationTraining.ViewModels;
+using System.Data.Entity.Migrations;
 
 namespace WebApplicationTraining.Controllers
 {
@@ -34,40 +35,7 @@ namespace WebApplicationTraining.Controllers
             }
             return View("Login");
         }
-        [HttpGet]
-        [Authorize(Roles = "TrainingStaff")]
-        public ActionResult Edit(int id)
-        {
-            var traineecourseInDb = _context.Categories.SingleOrDefault(p => p.Id == id);
-
-            if (traineecourseInDb == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(traineecourseInDb);
-        }
-        [HttpPost]
-        [Authorize(Roles = "TrainingStaff")]
-        public ActionResult Edit(TraineeCourse traineecourse)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            var traineecourseInDb = _context.TraineeCourses.SingleOrDefault(p => p.Id == traineecourse.Id);
-
-            if (traineecourseInDb == null)
-            {
-                return HttpNotFound();
-            }
-            traineecourseInDb.Trainee = traineecourse.Trainee;
-            traineecourseInDb.Course = traineecourse.Course;
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+        
         [HttpGet]
         [Authorize(Roles = "TrainingStaff")]
 
@@ -97,7 +65,7 @@ namespace WebApplicationTraining.Controllers
             {
                 Courses = courses,
                 Trainees = users,
-                TraineeCourse = new TraineeCourse()
+                TraineeCourses = new TraineeCourse()
             };
 
             return View(TrainerTopicVM);
@@ -117,19 +85,57 @@ namespace WebApplicationTraining.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.TraineeCourses.Add(model.TraineeCourse);
+                _context.TraineeCourses.Add(model.TraineeCourses);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            var TrainerTopicVM = new TraineeCourseViewModel()
+            var TraineeCourseVM = new TraineeCourseViewModel()
             {
                 Courses = courses,
                 Trainees = users,
-                TraineeCourse = new TraineeCourse()
+                TraineeCourses = new TraineeCourse()
             };
 
-            return View(TrainerTopicVM);
+            return View(TraineeCourseVM);
+        }
+
+        [HttpGet]
+        [Authorize(Roles ="TrainingStaff")]
+        public ActionResult Edit(int id)
+        {
+            var role = (from r in _context.Roles where r.Name.Contains("Trainee") select r).FirstOrDefault();
+            var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
+            var courses = _context.Courses.ToList();
+            var traineecourseId = _context.TraineeCourses.SingleOrDefault(n => n.Id == id);
+            if (traineecourseId == null) return HttpNotFound();
+            var viewModel = new TraineeCourseViewModel()
+            {
+                Courses = courses,
+                Trainees = users,
+                TraineeCourses = new TraineeCourse()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "TrainingStaff")]
+        public ActionResult Edit(TraineeCourseViewModel model)
+        {
+            var role = (from r in _context.Roles where r.Name.Contains("Trainee") select r).FirstOrDefault();
+            var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
+            var courses = _context.Courses.ToList();
+
+            if (!ModelState.IsValid) return View();
+            var TraineeCourseVM = new TraineeCourseViewModel()
+            {
+                Courses = courses,
+                Trainees = users,
+                TraineeCourses = new TraineeCourse()
+            };
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

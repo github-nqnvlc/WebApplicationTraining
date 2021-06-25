@@ -6,6 +6,8 @@
 
 
 <div class="navbar-collapse collapse">
+        <h1>WELCOME TO </h1>
+        <h2>FPT APPLICATION TRAINING</h2>
     
         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
         {
@@ -24,6 +26,7 @@
                 <!--<li>@Html.ActionLink("Assign Trainer Topic", "Index", "TrainerTopics", null, new { @class = "btn btn-default" })</li>-->
                 <li>@Html.ActionLink("Assign Trainee Course", "Index", "TraineeCourses", null, new { @class = "btn btn-default" })</li>
                 <li>@Html.ActionLink("Assign Trainer Course", "Index", "TrainerCourses", null, new { @class = "btn btn-default" })</li>
+                <li>@Html.ActionLink("Profile Training Staff", "Profile", "ManageUsers", null, new { @class = "btn btn-default" })</li>
 
             </ul>
                 

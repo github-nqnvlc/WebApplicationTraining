@@ -104,7 +104,7 @@ namespace WebApplicationTraining.Controllers
             if (userDetail == null) return HttpNotFound();
             return View(userDetail);
         }
-        [Authorize(Roles = "Trainer,Trainee")]
+        [Authorize(Roles = "Trainer,Trainee,TrainingStaff")]
         public ActionResult Profile()
         {
             var userProfileId = User.Identity.GetUserId();
@@ -113,7 +113,7 @@ namespace WebApplicationTraining.Controllers
             return View(userProfile);
         }
         [HttpGet]
-        [Authorize(Roles = "Trainer, Trainee")]
+        [Authorize(Roles = "Trainer, Trainee,TrainingStaff")]
         public ActionResult EditProfile(string id)
         {
             id = User.Identity.GetUserId();
@@ -123,7 +123,7 @@ namespace WebApplicationTraining.Controllers
             return View(userInfo);
         }
         [HttpPost]
-        [Authorize(Roles = "Trainer, Trainee")]
+        [Authorize(Roles = "Trainer, Trainee,TrainingStaff")]
         public ActionResult EditProfile(ApplicationUser user)
         {
             user.Id = User.Identity.GetUserId();
